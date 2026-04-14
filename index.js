@@ -49,7 +49,7 @@ app.get("/register", (req, res) => {
   res.render("register.ejs");
 });
 
-app.get("/logout", (req, res) => {
+app.get("/logout", (req, res, next) => {
   req.logout(function (err) {
     if (err) {
       return next(err);
@@ -121,16 +121,11 @@ app.post("/register", async (req, res) => {
     if (foundUser) {
       res.redirect("/login");
     } else {
-      bcrypt.hash(password, saltRounds, async (err, hash) => {
-        if (err) {
-          console.error("Error hashing password:", err);
-        } else {
-          const user = await User.create({ email, password: hash });
-          req.login(user, (err) => {
-            console.log("success");
-            res.redirect("/secrets");
-          });
-        }
+      const hash = await bcrypt.hash(password, saltRounds);
+      const user = await User.create({ email, password: hash });
+      req.login(user, (err) => {
+        console.log("success");
+        res.redirect("/secrets");
       });
     }
   } catch (err) {

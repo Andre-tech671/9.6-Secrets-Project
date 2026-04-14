@@ -1,16 +1,289 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #E8ECEF;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
 }
 
-.centered {
-    padding-top: 200px;
-    text-align: center;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.secret-text {
+/* Hero / Jumbotron Styles */
+.jumbotron {
+  background: rgba(255, 255, 255, 0.1) !important;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  padding: 4rem 2rem !important;
+  margin: 2rem auto !important;
   text-align: center;
-  font-size: 2rem;
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.8s ease-out;
+}
+
+.jumbotron::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
+  background-size: 300% 300%;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Icons */
+.jumbotron i.fa-key {
+  font-size: 6rem;
+  color: #4ecdc4;
+  margin-bottom: 1.5rem;
+  animation: float 3s ease-in-out infinite;
+  text-shadow: 0 10px 20px rgba(78, 205, 196, 0.3);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Typography */
+.jumbotron h1.display-3 {
+  font-weight: 700;
+  font-size: 3.5rem;
+  background: linear-gradient(135deg, #fff, #f0f0f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+  .jumbotron h1.display-3 { font-size: 2.5rem; }
+}
+
+.jumbotron .lead {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+/* Buttons */
+.btn {
+  padding: 12px 30px;
+  font-weight: 500;
+  border-radius: 50px;
+  border: none;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-light {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+.btn-light:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.3);
+}
+
+.btn-dark {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.btn-dark:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.6);
+}
+
+/* Centered Content */
+.centered {
+  padding-top: 2rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .centered { padding-top: 1rem; }
+}
+
+/* Secret Text */
+.secret-text {
+  background: rgba(0, 0, 0, 0.8);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 2rem 0;
+  font-size: 1.8rem;
+  font-weight: 300;
   color: #fff;
-  background-color: #000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+  line-height: 1.4;
+  position: relative;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .secret-text { font-size: 1.4rem; padding: 1.5rem; }
+}
+
+/* Forms */
+.form-control {
+  border-radius: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 15px 20px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.form-control:focus {
+  border-color: #4ecdc4;
+  box-shadow: 0 0 0 0.2rem rgba(78, 205, 196, 0.25);
+  transform: scale(1.02);
+  background: rgba(255, 255, 255, 1);
+}
+
+.form-control::placeholder {
+  color: #888;
+  font-weight: 300;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Cards */
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+/* Responsive Grid */
+@media (max-width: 768px) {
+  .jumbotron { margin: 1rem; padding: 2rem 1rem !important; }
+  .btn { padding: 10px 25px; font-size: 0.85rem; }
+  .row > .col-sm-8, .row > .col-sm-4 { margin-bottom: 1.5rem; }
+}
+
+/* Google Button */
+.btn-block {
+  background: linear-gradient(135deg, #4285f4, #34a853, #fbbc05, #ea4335);
+  color: white !important;
+  border-radius: 15px;
+  padding: 15px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-block:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(66, 133, 244, 0.4);
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Loading Animation */
+.btn:active {
+  transform: scale(0.98);
 }
